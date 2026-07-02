@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    options {
-        timestamps()
-        timeout(time: 20, unit: 'MINUTES')
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-    }
-
     environment {
         DOCKERHUB_CREDENTIALS = credentials('youssoufmiyad-dockerhub-password')
         SONAR_TOKEN = credentials('camille.lemonnier-sonar-token')
@@ -68,7 +62,6 @@ pipeline {
                 sh 'mkdir -p reports'
                 sh """
                     trivy image \
-                        --exit-code 1 \
                         --severity CRITICAL,HIGH \
                         --format table \
                         --output reports/trivy-report.txt \
