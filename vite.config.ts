@@ -9,6 +9,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/__tests__/setup.ts',
     css: false,
+    testTimeout: 20000,
+    hookTimeout: 20000,
+    pool: 'threads',
+    maxWorkers: 2,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'json-summary'],
