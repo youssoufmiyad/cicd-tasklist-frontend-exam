@@ -28,7 +28,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube-server-2') {
+                withSonarQubeEnv(installationName: 'sonarqube-server-2', credentialsId: 'camille.lemonnier-sonar-token') {
                     sh 'npx sonar-scanner'
                 }
             }
