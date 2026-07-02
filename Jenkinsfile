@@ -115,7 +115,7 @@ pipeline {
                         --tag ${DOCKER_IMAGE}:${DOCKER_TAG} \\
                         --tag ${DOCKER_IMAGE}:latest \\
                         --sbom=true \\
-                        --provenance-true \\
+                        --provenance=true \\
                         --push \\
                         .
                 """
